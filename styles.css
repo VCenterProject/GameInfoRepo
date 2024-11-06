@@ -1,62 +1,43 @@
-/* Reset basic styles */
-* {
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f4f4f9, #e3e3e3); /* Gradient background */
 }
 
-body, html {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+/* Gallery container to hold the game cards */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
     padding: 20px;
 }
 
-.container {
-    max-width: 100%;
-    text-align: center;
-}
-
-.game-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
+/* Style for each game card */
 .game-card {
-    background: white;
-    border-radius: 8px;
+    background: #fff;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+    cursor: pointer;
 }
 
+/* Hover effect for game card */
 .game-card:hover {
     transform: scale(1.05);
 }
 
-.game-card img {
+/* Styling the game thumbnail */
+.game-thumbnail {
     width: 100%;
-    height: auto;
-    display: block;
-}
-
-.game-info {
-    padding: 15px;
-}
-
-.game-title {
-    font-size: 1.2em;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.game-id {
-    font-size: 0.9em;
-    color: #888;
+    height: 180px;
+    object-fit: cover;
 }

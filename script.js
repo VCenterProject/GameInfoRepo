@@ -1,53 +1,25 @@
-// Function to fetch and render games from GameInfo.json
-async function renderGames() {
-    try {
-        // Fetch the JSON data from the file
-        const response = await fetch('GameInfo.json');
-        const gameData = await response.json();
+// Fetch the game list data from GameInfo.json
+fetch('GameInfo.json')
+    .then(response => response.json())
+    .then(data => {
+        const galleryContainer = document.getElementById('gallery');
+        
+        // Loop through each game in the data object
+        for (const gameId in data) {
+            const game = data[gameId];
 
-        // Get the container to place game cards in
-        const gameList = document.getElementById('game-list');
-
-        // Loop through each game in the data
-        for (const gameId in gameData) {
-            const game = gameData[gameId];
-
-            // Create game card container
+            // Create a game card
             const gameCard = document.createElement('div');
             gameCard.classList.add('game-card');
 
-            // Add game thumbnail
-            const thumbnail = document.createElement('img');
-            thumbnail.src = game.thumbnail_url;
-            thumbnail.alt = game.name;
-            gameCard.appendChild(thumbnail);
+            // Thumbnail image
+            const gameThumbnail = document.createElement('img');
+            gameThumbnail.classList.add('game-thumbnail');
+            gameThumbnail.src = game.thumbnail_url;
+            gameCard.appendChild(gameThumbnail);
 
-            // Add game info container
-            const gameInfo = document.createElement('div');
-            gameInfo.classList.add('game-info');
-
-            // Add game title
-            const gameTitle = document.createElement('h2');
-            gameTitle.classList.add('game-title');
-            gameTitle.textContent = game.name;
-            gameInfo.appendChild(gameTitle);
-
-            // Add game ID
-            const gameIdElement = document.createElement('p');
-            gameIdElement.classList.add('game-id');
-            gameIdElement.textContent = `ID: ${game.id}`;
-            gameInfo.appendChild(gameIdElement);
-
-            // Append game info to the card
-            gameCard.appendChild(gameInfo);
-
-            // Append game card to the list
-            gameList.appendChild(gameCard);
+            // Append the game card to the gallery
+            galleryContainer.appendChild(gameCard);
         }
-    } catch (error) {
-        console.error('Error loading game data:', error);
-    }
-}
-
-// Call render function on page load
-document.addEventListener('DOMContentLoaded', renderGames);
+    })
+    .catch(error => console.error('Error loading game list:', error));
