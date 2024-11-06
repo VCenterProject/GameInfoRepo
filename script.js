@@ -1,5 +1,5 @@
 // Fetch the game list data from GameInfo.json
-fetch('https://vcenterproject.github.io/GameInfoRepo/GameInfo.json')  // Or update this path to match where your file is located
+fetch('https://vcenterproject.github.io/GameInfoRepo/GameInfo.json')  // Update this path to match where your file is located
     .then(response => {
         // Check if the response is OK (status 200)
         if (!response.ok) {
@@ -22,17 +22,25 @@ fetch('https://vcenterproject.github.io/GameInfoRepo/GameInfo.json')  // Or upda
         for (const gameId in data) {
             const game = data[gameId];
 
-            // Create a game card
+            // Create a game card container
             const gameCard = document.createElement('div');
             gameCard.classList.add('game-card');
 
-            // Thumbnail image
+            // Create the thumbnail image
             const gameThumbnail = document.createElement('img');
             gameThumbnail.classList.add('game-thumbnail');
             gameThumbnail.src = game.thumbnail_url;
-            gameCard.appendChild(gameThumbnail);
 
-            // Append the game card to the gallery
+            // Create the game title
+            const gameTitle = document.createElement('p');
+            gameTitle.classList.add('game-title');
+            gameTitle.textContent = game.name;  // Set the game title
+
+            // Append the thumbnail and title to the game card
+            gameCard.appendChild(gameThumbnail);
+            gameCard.appendChild(gameTitle);
+
+            // Append the game card to the gallery container
             galleryContainer.appendChild(gameCard);
         }
     })
