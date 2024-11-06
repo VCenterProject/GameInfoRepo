@@ -2,7 +2,7 @@
 async function renderGames() {
     try {
         // Fetch the JSON data from the file
-        const response = await fetch('GameInfo.json');
+        const response = await fetch('https://vcenterproject.github.io/GameInfoRepo/GameInfo.json');
         const gameData = await response.json();
 
         // Get the container to place game cards in
