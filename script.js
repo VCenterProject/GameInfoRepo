@@ -6,7 +6,13 @@ async function renderGames() {
         const gameData = await response.json();
 
         // Get the container to place game cards in
-        const gameList = document.getElementById('game-list');
+        const gameList = document.getElementById('game-list'); // Check if this ID exists in your HTML
+
+        // Check if the container is found
+        if (!gameList) {
+            console.error('Error: Game list container not found.');
+            return;
+        }
 
         // Loop through each game in the data
         for (const gameId in gameData) {
@@ -44,4 +50,4 @@ async function renderGames() {
 }
 
 // Call render function on page load
-document.addEventListener('DOMContentLoaded', renderGames);
+renderGames();
