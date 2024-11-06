@@ -1,5 +1,5 @@
 // Fetch the game list data from GameInfo.json
-fetch('GameInfo.json')
+fetch('GameInfo.json')  // Make sure GameInfo.json is correctly referenced
     .then(response => response.json())
     .then(data => {
         const galleryContainer = document.getElementById('gallery');
