@@ -8,12 +8,6 @@ async function renderGames() {
         // Get the container to place game cards in
         const gameList = document.getElementById('game-list');
 
-        // Ensure that the container exists before proceeding
-        if (!gameList) {
-            console.error('Error: Game list container not found.');
-            return;
-        }
-
         // Loop through each game in the data
         for (const gameId in gameData) {
             const game = gameData[gameId];
@@ -38,6 +32,12 @@ async function renderGames() {
             gameTitle.textContent = game.name;
             gameInfo.appendChild(gameTitle);
 
+            // Add game ID
+            const gameIdElement = document.createElement('p');
+            gameIdElement.classList.add('game-id');
+            gameIdElement.textContent = `ID: ${game.id}`;
+            gameInfo.appendChild(gameIdElement);
+
             // Append game info to the card
             gameCard.appendChild(gameInfo);
 
@@ -50,4 +50,4 @@ async function renderGames() {
 }
 
 // Call render function on page load
-renderGames();
+document.addEventListener('DOMContentLoaded', renderGames);
