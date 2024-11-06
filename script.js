@@ -1,5 +1,5 @@
 // Fetch the game list data from GameInfo.json
-fetch('GameInfo.json')  // Or update this path to match where your file is located
+fetch('https://vcenterproject.github.io/GameInfoRepo/GameInfo.json')  // Or update this path to match where your file is located
     .then(response => {
         // Check if the response is OK (status 200)
         if (!response.ok) {
