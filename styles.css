@@ -1,54 +1,43 @@
-/* Ensure the body takes full height of the viewport and center its contents */
+/* General body styles */
 body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove default margin */
-    background-color: #f0f0f0; /* Set a background color */
+    height: 100vh;
+    background: linear-gradient(135deg, #f4f4f9, #e3e3e3); /* Gradient background */
 }
 
-/* Container for the gallery */
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow the game cards to wrap onto new lines */
-    justify-content: center; /* Center items horizontally */
-    gap: 20px; /* Space between cards */
-    max-width: 1200px; /* Limit the max width of the gallery */
+/* Gallery container to hold the game cards */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    padding: 20px;
 }
 
 /* Style for each game card */
 .game-card {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    width: 200px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-/* Hover effect for game cards */
+/* Hover effect for game card */
 .game-card:hover {
-    transform: scale(1.05); /* Slight zoom effect */
+    transform: scale(1.05);
 }
 
-/* Style for the game thumbnail */
+/* Styling the game thumbnail */
 .game-thumbnail {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Style for the game title */
-.game-title {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    height: 180px;
+    object-fit: cover;
 }
